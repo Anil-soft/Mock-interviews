@@ -1,0 +1,49 @@
+what is the difference between curl and wget?
+  We may wish to send HTTP requests without using a web browser or other interactive app.
+  The main difference between them is that curl will show the output in the console. 
+  On the other hand, wget will download it into a file
+  $ curl -o outputfile.zip https://example.com/file.zip
+  This command downloads file located at https://example.com/file.zip 
+  and saves it as outputfile.zip. -o option specifies output file name.
+ $ wget https://example.com/file.zip
+  This command downloads file located at https://example.com/file.zip and saves it using original file name.
+
+can we check which user is belongs to which groupd?
+ $ groups username
+ $ grep anil /etc/groups
+
+what is the master and slave node configuration in jenkins?
+  master is the responsible for managing the slaves, if we have more builds in master server the master server will get performance
+  issue or it may go down so that master server will distribute load to the slave nodes.
+
+I have two jobs in jenkins when one job gets triggered that should trigger another how can i do that?
+  Open the Jenkins dashboard and navigate to the configuration of the job that you want to trigger the other job.
+  In the job configuration page, find the "Build" section.
+  Click on the "Add build step" dropdown and select "Build other projects."
+  In the "Projects to build" field, enter the name of the job that you want to trigger when this job runs. 
+
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build and Trigger JobA') {
+            steps {
+
+                build job: 'JobB', wait: false
+            }
+        }
+        
+        stage('Build JobB') {
+            steps {
+            
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
